@@ -1,12 +1,19 @@
 const express = require('express');
-const mongoose = require('mongoose');
 
 const app = express();
+
+let urls = {}
 
 app.use(express.static(__dirname + '/build'))
 
 app.get('/', function(req, res){
-  res.redirect('/catalog');
+  console.log(req)
+  res.sendFile("index.html", {root: path.join(__dirname, '/public')});
 })
 
-app.listen(4000);
+app.post('/', function(req, res){ //handles post request from client
+  console.log(re)
+})
+
+
+app.listen(3000);
