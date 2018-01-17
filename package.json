@@ -5,9 +5,12 @@
   "dependencies": {
     "express": "^4.16.2",
     "nodemon": "^1.14.11",
+    "path": "^0.12.7",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-scripts": "1.1.0"
+    "react-scripts": "1.1.0",
+    "webpack": "^3.10.0",
+    "webpack-combine-loaders": "^2.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
