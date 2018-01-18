@@ -27,7 +27,7 @@ class App extends Component {
   handleSubmit(event){
     event.preventDefault()
     let urls = this.urlConvert()
-    axios.post('/', {
+    axios.post('/', { //sends url and its shortened version to server for routing
     origUrl: urls['origUrl'],
     shortUrl: urls['shortUrl']
     })
@@ -48,6 +48,12 @@ class App extends Component {
   }
 
   render() {
+
+    let fullShortUrl = null;
+    if(this.state.shortUrl){
+      fullShortUrl = "http://localhost:3000/" + this.state.shortUrl
+    }
+
     return (
       <div className="App">
         <header className="App-header">
@@ -57,14 +63,14 @@ class App extends Component {
         <form onSubmit={(event)=>{this.handleSubmit(event)}}>
               <label>
                 URL:
-                <input id="origurl" type="text" value={this.state.origUrl}
+                <input type="text" value={this.state.origUrl}
                 onChange={this.handleChange}/>
               </label>
           <input type="submit" value="Submit" />
         </form>
 
         <p> New url: </p>
-        <p> <a href={this.state.origUrl}>{this.state.shortUrl}</a> </p>
+        <p> <a href={fullShortUrl}>{fullShortUrl}</a> </p>
 
       </div>
     );
