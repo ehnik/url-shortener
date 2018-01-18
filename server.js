@@ -25,7 +25,7 @@ app.get('/:url', function(req, res){
   }
 })
 
-app.post('/', function(req, res){ //saves user-submitted link to urls hash
+app.post('/', function(req, res){ //saves user-submitted link and short version to urls hash
   urls[req.body.shortUrl] = req.body.origUrl
   res.send('POST request to homepage');
 })
