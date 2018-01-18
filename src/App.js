@@ -42,7 +42,7 @@ class App extends Component {
     for(let x = 0; x<shortUrl.length; x++){
       shortUrl[x] = this.chars[Math.floor(Math.random()*Math.floor(35))] //gives indices 0-35
     }
-    shortUrl = "http://shortner." + shortUrl.join("")
+    shortUrl = shortUrl.join("")
     this.setState({shortUrl})
     return {origUrl: this.state.origUrl, shortUrl}
   }
