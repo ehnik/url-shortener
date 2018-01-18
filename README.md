@@ -6,6 +6,6 @@ until the server is restarted.
 
 To run:
 
-1) Install dependencies via NPM and run $ node server.js
+1) Install dependencies via NPM and run $ node server.js on your command line.
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
