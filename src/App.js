@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import axios from 'axios';
 
 class App extends Component {
 
@@ -25,16 +26,25 @@ class App extends Component {
 
   handleSubmit(event){
     event.preventDefault()
-    this.urlConvert()
+    let urls = this.urlConvert()
+    axios.post('/', {
+    origUrl: urls['origUrl'],
+    shortUrl: urls['shortUrl']
+    })
+    .then( (res) => console.log(res ))
+    .catch(function (error) {
+    console.log(error);
+    })
   }
 
   urlConvert(){
-    let newUrl = new Array(8)
-    for(let x = 0; x<newUrl.length; x++){
-      newUrl[x] = this.chars[Math.floor(Math.random()*Math.floor(35))] //gives indices 0-35
+    let shortUrl = new Array(8)
+    for(let x = 0; x<shortUrl.length; x++){
+      shortUrl[x] = this.chars[Math.floor(Math.random()*Math.floor(35))] //gives indices 0-35
     }
-    newUrl = "http://shortner." + newUrl.join("")
-    this.setState({shortUrl: newUrl})
+    shortUrl = "http://shortner." + shortUrl.join("")
+    this.setState({shortUrl})
+    return {origUrl: this.state.origUrl, shortUrl}
   }
 
   render() {
@@ -44,7 +54,7 @@ class App extends Component {
           <h1 className="App-title">Url Shortener</h1>
         </header>
 
-        <form action="POST" onSubmit={(event)=>{this.handleSubmit(event)}}>
+        <form onSubmit={(event)=>{this.handleSubmit(event)}}>
               <label>
                 URL:
                 <input id="origurl" type="text" value={this.state.origUrl}
