@@ -44,7 +44,7 @@ class App extends Component {
           <h1 className="App-title">Url Shortener</h1>
         </header>
 
-        <form onSubmit={(event)=>{this.handleSubmit(event)}}>
+        <form action="POST" onSubmit={(event)=>{this.handleSubmit(event)}}>
               <label>
                 URL:
                 <input id="origurl" type="text" value={this.state.origUrl}
