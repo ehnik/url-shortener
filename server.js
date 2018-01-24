@@ -12,7 +12,7 @@ app.get('/', function(req, res){
 })
 
 app.get('/:url', function(req, res){
-  let shortUrl = req.url.replace('/','')
+  let shortUrl = req.params.url
   if(urls.hasOwnProperty(shortUrl)){ //if url is a saved shortened url, initiates redirect
     let origUrl = urls[shortUrl];
     if(!origUrl.match(/^[a-zA-Z]+:\/\//)){ //ensures url formatting
@@ -26,6 +26,8 @@ app.get('/:url', function(req, res){
 })
 
 app.post('/', function(req, res){ //saves user-submitted link and short version to urls hash
+  console.log(req.connection.remoteAddress)
+  console.log(req.headers['x-forwarded-for'])
   urls[req.body.shortUrl] = req.body.origUrl
   res.send('POST request to homepage');
 })
